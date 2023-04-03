@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface BookRepository extends JpaRepository<Book, String> {
   @Query("SELECT u FROM Book u WHERE " +
@@ -20,4 +22,7 @@ public interface BookRepository extends JpaRepository<Book, String> {
       @Param("author") String author,
       @Param("publisher") String publisher,
       Pageable pageable);
+
+  @Query(value = "SELECT * from mst_book p where p.stock < 5", nativeQuery = true)
+  List<Book> findBookMinStock();
 }

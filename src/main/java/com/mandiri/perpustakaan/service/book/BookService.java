@@ -9,15 +9,21 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface BookService {
-   List<Book> getAllBook();
-   Book getBookById(String id);
-   Book saveBook(Book book);
-   void delete(String id);
+  List<Book> getAllBook();
+
+  Book getBookById(String id);
+
+  Book saveBook(Book book);
+
+  void delete(String id);
+
   Book updateBook(Book book);
+
   Page<Book> searchByTitleAuthorPublisher(
       @Param("title") String title,
       @Param("author") String author,
       @Param("publisher") String publisher,
       Pageable pageable);
+  List<Book> findProductMinStock();
+  }
 
-}

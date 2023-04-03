@@ -46,11 +46,18 @@ public class BookServiceImpl implements BookService{
     }else{
       throw new EntityNotFoundException("Book with id" + book.getId() +"not found");
     }
+
+
   }
 
   @Override
   public Page<Book> searchByTitleAuthorPublisher(String title, String author, String publisher, Pageable pageable) {
     return bookRepository.searchByTitleAuthorPublisher(title,author,publisher,pageable);
+  }
+
+  @Override
+  public List<Book> findProductMinStock() {
+   return bookRepository.findBookMinStock();
   }
 
 }
