@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -19,7 +20,7 @@ public class BookServiceImpl implements BookService{
   @Override
   public List<Book> getAllBook() {
     List<Book> list = bookRepository.findAll();
-    list.stream().filter(element->element.getStock() > 0);
+    list.sort(Comparator.comparing(Book::getTitle));
     return list;
   }
 
