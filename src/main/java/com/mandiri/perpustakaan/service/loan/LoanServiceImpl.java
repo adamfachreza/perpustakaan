@@ -55,11 +55,11 @@ public class LoanServiceImpl implements LoanService{
       Loan returnedLoan = optionalLoan.get();
       returnedLoan.setReturnDate(now);
 
-      Book book = returnedLoan.getBook();
-      book.setStock(book.getStock() + 1); // tambahkan stok buku
-      bookService.saveBook(book); // simpan buku yang sudah diupdate
+      Book book = bookService.getBookById(loan.getBook().getId());
+      book.setStock(book.getStock() + 1);
+      bookService.saveBook(book);
 
-      return saveLoan(returnedLoan);
+      return loanRepository.save(returnedLoan);
     } else {
       throw new EntityNotFoundException("Loan with id " + loan.getId() + " not found");
     }
