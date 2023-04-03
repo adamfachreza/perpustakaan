@@ -24,6 +24,6 @@ public interface BookService {
       @Param("author") String author,
       @Param("publisher") String publisher,
       Pageable pageable);
-  List<Book> findProductMinStock();
+  List<Book> findBookMinStock();
   }
 

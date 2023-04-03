@@ -46,8 +46,6 @@ public class BookServiceImpl implements BookService{
     }else{
       throw new EntityNotFoundException("Book with id" + book.getId() +"not found");
     }
-
-
   }
 
   @Override
@@ -56,7 +54,7 @@ public class BookServiceImpl implements BookService{
   }
 
   @Override
-  public List<Book> findProductMinStock() {
+  public List<Book> findBookMinStock() {
    return bookRepository.findBookMinStock();
   }
 

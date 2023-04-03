@@ -47,4 +47,9 @@ public class BookController {
     Pageable pageable = PageRequest.of(page, sizePerPage);
     return bookService.searchByTitleAuthorPublisher(title, author, publisher, pageable);
   }
+
+  @GetMapping("/min-stock")
+  public List<Book> getBookMinStock(){
+    return bookService.findBookMinStock();
+  }
 }
